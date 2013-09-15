@@ -1,0 +1,87 @@
+<%= form_for([:admin, @admin_post], html: { class: "post_form" }) do |f| %>
+  <% if @admin_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_post.errors.count, "error") %> prohibited this admin_post from being saved:</h2>
+
+      <ul>
+      <% @admin_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  Cover:
+  <% if @admin_post.upload %>
+    <%= image_tag @admin_post.upload.upload.url(:thumb) %>
+  <% else %>
+    <% @admin_post.build_upload %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.fields_for :upload do |u| %>
+      <%= u.file_field :upload %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <div class="title_count"></div>
+    <%= f.text_field :page_title, class: "form-control", placeholder: "Page Title" %>
+  </div>
+  <div class="form-group">
+    <div class="meta_desc_count"></div>
+    <%= f.text_area :meta_description, class: "form-control", placeholder: "Meta Description" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :slug, class: "form-control", placeholder: "Slug" %>
+  </div>
+  <div class="form-group">
+    <div class="body_count"></div>
+    <%= f.text_area :body, class: "form-control", placeholder: "Body" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :published, class: "form-control", placeholder: "Published" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.collection_select :user_id, User.all, :id, :email, {}, { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :tag_list, style: "width: 100%" %>
+  </div>
+
+
+  <div class="checkbox">
+    <label>
+      <% if controller.action_name == "new" %>
+        <%= f.check_box :active, checked: "checked" %> Active
+      <% else %>
+        <%= f.check_box :active %> Active
+      <% end %>
+    </label>
+  </div>
+
+  <br />
+  <div class="actions pull-right">
+    <%= f.submit "Preview Post", class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+<% end %>
+
+<br />
+<br />
+
+<h4>Preview:</h4>
+<div class="preview">
+</div>
+
+
+<script>
+  $(function() {
+    $("#post_tag_list").select2({
+      tags: <%= raw Post.tag_counts.map(&:name) %>
+    });
+  });
+</script>

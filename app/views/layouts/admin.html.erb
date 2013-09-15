@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JohnDel's Personal Page <%= controller.controller_name %> - <%= controller.action_name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    "admin/admin_base_css", media: "all", "data-turbolinks-track" => true %>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.min.js"></script>
+    <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render partial: "layouts/admin/horizontal_menu" %>
+<div class="container admin-main-container">
+  <%= render partial: "layouts/flash_messages" %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= render partial: "layouts/admin/sidebar" %>
+    </div>
+    <div class="col-md-10">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+  <%= javascript_include_tag "admin/admin_base_js", "data-turbolinks-track" => true %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

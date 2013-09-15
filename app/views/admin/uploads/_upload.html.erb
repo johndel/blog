@@ -1,0 +1,9 @@
+<div class="upload">
+  <div class="frame">
+    <%= image_tag(upload.upload_url) %>
+  </div>
+  <div class="name"><%= link_to truncate(upload.name, length: 16), upload.upload_url %></div>
+  <div class="actions">
+    <%= link_to "remove", [:admin, upload], data: {confirm: 'Are you sure?'}, :method => :delete %>
+  </div>
+</div>

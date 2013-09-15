@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Hello, I am John.</h1>
+    <p>I am a Ruby on Rails developer and this is my blog.</p>
+    <p><%= link_to "Read my blog", posts_path, class: "btn btn-primary btn-lg" %></p>
+  </div>
+</div>
+
+<div id="posts">
+  <% @posts.each_with_index do |post, i| %>
+  <% if i+1 % 4 == 0 %>
+    <div class="row">
+  <% end %>
+      <div class="col-lg-4">
+        <div class="post_content">
+          <div><%= post.upload.upload.url(:cover) rescue "" %></div>
+          <div><%= raw post.meta_description.truncate(180) %></div>
+        </div>
+        <div><%= link_to "Read the rest", post_path(post), class: "btn btn-primary" %></div>
+      </div>
+    <% if i+1 % 4 == 0 %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

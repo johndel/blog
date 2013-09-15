@@ -1,0 +1,14 @@
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">JohnDel's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "RSS", posts_path(format: "atom") %></li>
+        <li><%= link_to "Blog", posts_path %></li>
+        <li><%= link_to "About", post_path(@about) %></li>
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->

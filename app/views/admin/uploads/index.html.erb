@@ -1,0 +1,28 @@
+<h1>Uploads</h1>
+
+<div id="uploads">
+
+
+<%= paginate @admin_uploads %>
+  <table class="table table-striped table-hover table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Url</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_uploads.each do |upload| %>
+        <tr>
+          <th><%= image_tag(upload.upload.url(:thumb)) %></th>
+          <td><%= upload.upload.url %></td>
+          <td><%= link_to 'Destroy', admin_upload_path(upload), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= paginate @admin_uploads %>
+</div>
+

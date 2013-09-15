@@ -1,0 +1,5 @@
+<div class="shared_buttons">
+  Share:
+  <%= link_to "", "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", class: "icon-facebook popup" %>
+  <%= link_to "", "https://twitter.com/share?&url=#{request.original_url}&text=#{Rack::Utils.escape(post.page_title)}%20#{request.original_url}", class: "icon-twitter popup" %>
+</div>

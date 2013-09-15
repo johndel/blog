@@ -1,0 +1,36 @@
+<div id="posts" class="col-lg-10">
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-11">
+        <h2 class="post_title"><%= post.page_title %></h2>
+        <div class="post_content"><%= raw post.meta_description %></div>
+        <div class="post_date"><%= post.published.strftime("%d/%m/%Y") %></div>
+        <div><%= link_to "Read the rest", post_path(post), class: "btn btn-primary" %></div>
+        <br />
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="col-lg-2">
+  <div class="per-month">
+  </div>
+
+  <div class="search">
+    <%= search_form_for @search, class: "form-inline" do |f| %>
+    <div class="input-group">
+      <%= f.text_field :page_title_or_meta_description_or_body_cont, class: "form-control", placeholder: "Search..." %>
+      <span class="input-group-btn">
+        <%= f.submit "Go!", class: "btn btn-default" %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="tag-cloud">
+    <h3>Tags</h3>
+    <% @tag_cloud.each do |tag| %>
+      <%= link_to tag.name, tag_posts_path(tag.name), class: "tag" %>
+    <% end %>
+  </div>
+</div>
