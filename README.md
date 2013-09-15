@@ -1,5 +1,5 @@
 # My Blog (JohnDel)
-
+[![Code Climate](https://codeclimate.com/repos/523533ccc7f3a34da00264e2/badges/f81894496e709ffb264e/gpa.png)](https://codeclimate.com/repos/523533ccc7f3a34da00264e2/feed)
 I've created a simple blog but with all the necessary functionality. Check it out and send me an email (istoselidas@gmail.com) of what you think.
 
 
